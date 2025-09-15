@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting a local MCP server - Notion Developers</title>
+    <link href="https://infima.dev/css/default/main.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar navbar--dark navbar--primary">
+        <div class="navbar__inner">
+            <div class="navbar__items">
+                <div class="navbar__brand">
+                    <div class="navbar__logo">
+                        <div class="notion-logo">N</div>
+                    </div>
+                    <strong class="navbar__title">Developers</strong>
+                </div>
+                <div class="navbar__items navbar__items--center">
+                    <a class="navbar__item navbar__link" href="#">Home</a>
+                    <a class="navbar__item navbar__link" href="#">Guides</a>
+                    <a class="navbar__item navbar__link" href="#">API Reference</a>
+                    <a class="navbar__item navbar__link" href="#">Changelog</a>
+                    <a class="navbar__item navbar__link" href="#">Examples</a>
+                </div>
+            </div>
+            <div class="navbar__items navbar__items--right">
+                <div class="navbar__search">
+                    <input class="navbar__search-input" type="search" placeholder="Search" />
+                    <span class="navbar__search-hint">CTRL-K</span>
+                </div>
+                <a class="navbar__item navbar__link" href="#">View my integrations</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar__menu">
+                <div class="menu">
+                    <div class="menu__group">
+                        <p class="menu__group-header">GET STARTED</p>
+                        <ul class="menu__list">
+                            <li class="menu__list-item"><a class="menu__link" href="#">Notion API Overview</a></li>
+                            <li class="menu__list-item"><a class="menu__link" href="#">Build your first integration</a></li>
+                            <li class="menu__list-item"><a class="menu__link" href="#">Authorization</a></li>
+                            <li class="menu__list-item"><a class="menu__link" href="#">Publishing to Notion's Integration Gallery</a></li>
+                            <li class="menu__list-item">
+                                <a class="menu__link" href="#">Upgrading to Version 2025-09-03</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="menu__group">
+                        <p class="menu__group-header">AGENT APIS</p>
+                        <ul class="menu__list">
+                            <li class="menu__list-item">
+                                <a class="menu__link menu__link--sublist" href="#">Notion MCP</a>
+                                <ul class="menu__list">
+                                    <li class="menu__list-item"><a class="menu__link" href="#">Connecting to Notion MCP</a></li>
+                                    <li class="menu__list-item"><a class="menu__link" href="#">Supported tools</a></li>
+                                    <li class="menu__list-item"><a class="menu__link" href="#">Security best practices</a></li>
+                                    <li class="menu__list-item menu__list-item--active">
+                                        <a class="menu__link menu__link--active" href="#">Hosting a local MCP server</a>
+                                        <ul class="menu__list">
+                                            <li class="menu__list-item"><a class="menu__link" href="#">Common MCP clients</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="menu__group">
+                        <p class="menu__group-header">DATA APIS</p>
+                        <ul class="menu__list">
+                            <li class="menu__list-item"><a class="menu__link" href="#">Working with page content</a></li>
+                            <li class="menu__list-item"><a class="menu__link" href="#">Working with databases</a></li>
+                            <li class="menu__list-item"><a class="menu__link" href="#">Working with comments</a></li>
+                            <li class="menu__list-item">
+                                <a class="menu__link menu__link--sublist" href="#">Working with files and media</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="menu__group">
+                        <p class="menu__group-header">LINK PREVIEWS</p>
+                        <ul class="menu__list">
+                            <li class="menu__list-item"><a class="menu__link" href="#">Introduction</a></li>
+                            <li class="menu__list-item"><a class="menu__link" href="#">Build a Link Preview integration</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu__group">
+                        <p class="menu__group-header">RESOURCES</p>
+                        <ul class="menu__list">
+                            <li class="menu__list-item"><a class="menu__link" href="#">Best practices for handling API keys</a></li>
+                            <li class="menu__list-item">
+                                <a class="menu__link menu__link--sublist" href="#">Example code</a>
+                            </li>
+                            <li class="menu__list-item">
+                                <a class="menu__link menu__link--sublist" href="#">Postman workspace</a>
+                            </li>
+                            <li class="menu__list-item"><a class="menu__link" href="#">Historical changelog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col col--8">
+                        <article class="article">
+                            <header class="article__header">
+                                <h1 class="article__title">Hosting a local MCP server</h1>
+                                <p class="article__subtitle">Learn how and when to use the open-source Notion MCP server.</p>
+                            </header>
+
+                            <div class="article__content">
+                                <p>If you would like to run your own MCP server, the <a href="#" class="link-highlight">notion-mcp-server package</a> is our open-source implementation. It offers more control over setup and behavior, and is a great fit for teams who already have an existing Notion integration or prefer to manage infrastructure themselves.</p>
+
+                                <p>Compared to Notion's remote MCP, this option requires more technical setup, including provisioning your own Notion integration and handling deployment. But it also gives you full visibility, support for the original JSON-based v1 APIs, and the flexibility to customize capabilities as needed.</p>
+
+                                <p>Our MCP server works with any MCP client. Select one that best fits your needs and use cases. Examples of supported MCP clients are listed <a href="#" class="link-highlight">here</a>.</p>
+
+                                <div class="admonition admonition--note">
+                                    <p class="admonition__content">
+                                        <span class="admonition__icon">ℹ️</span>
+                                        Updated about 2 months ago
+                                    </p>
+                                </div>
+
+                                <div class="what-next">
+                                    <h3>WHAT'S NEXT</h3>
+                                    <p>Explore the <a href="#" class="link-highlight">GitHub repo</a> to get started.</p>
+                                    <p>Learn more about common AI tools.</p>
+                                    <p><a href="#" class="link-highlight">Common MCP clients →</a></p>
+                                </div>
+
+                                <div class="feedback">
+                                    <p>Did this page help you?</p>
+                                    <div class="feedback__buttons">
+                                        <button class="button button--outline button--sm feedback__button">
+                                            👍 Yes
+                                        </button>
+                                        <button class="button button--outline button--sm feedback__button">
+                                            👎 No
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col col--4">
+                        <div class="table-of-contents">
+                            <div class="ask-ai">
+                                <button class="button button--outline button--sm ask-ai__button">
+                                    🤖 Ask AI
+                                </button>
+                            </div>
+                            <div class="suggest-edits">
+                                <a href="#" class="suggest-edits__link">
+                                    ✏️ Suggest Edits
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer footer--dark">
+        <div class="container">
+            <div class="row footer__links">
+                <div class="col footer__col">
+                    <div class="footer__title">Developers</div>
+                    <ul class="footer__items">
+                        <li class="footer__item"><a class="footer__link-item" href="#">Guides</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">API reference</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">My integrations</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">Developer terms</a></li>
+                    </ul>
+                </div>
+                <div class="col footer__col">
+                    <div class="footer__title">Notion</div>
+                    <ul class="footer__items">
+                        <li class="footer__item"><a class="footer__link-item" href="#">Product</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">Teams</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">Enterprise</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">Blog</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col footer__col">
+                    <div class="footer__title">Community</div>
+                    <ul class="footer__items">
+                        <li class="footer__item"><a class="footer__link-item" href="#">Slack</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">Stack Overflow</a></li>
+                        <li class="footer__item"><a class="footer__link-item" href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom text--center">
+                <div class="footer__copyright">
+                    <div class="notion-logo-footer">N</div>
+                    <div>
+                        <strong>Notion</strong><br>
+                        The all-in-one workspace for your<br>
+                        notes, tasks, wikis, and databases.<br>
+                        <a href="#">@NotionAPI</a><br>
+                        ©2025 Notion Labs, Inc.<br>
+                        <a href="#">Terms & Privacy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
